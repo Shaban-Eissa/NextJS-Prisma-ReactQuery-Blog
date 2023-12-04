@@ -14,6 +14,7 @@ interface ButtonActionProps {
 
 const ButtonAction: FC<ButtonActionProps> = ({ id }) => {
   const router = useRouter();
+  //eslint-disable-next-line
   const { mutate: deletePost, isLoading } = useMutation({
     mutationFn: async () => {
       return await axios.delete(`/api/posts/${id}`);

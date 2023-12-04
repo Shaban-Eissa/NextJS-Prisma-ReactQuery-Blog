@@ -13,6 +13,8 @@ const CreatePage = () => {
   const handleCreatePost: SubmitHandler<FormInputPost> = (data) => {
     createPost(data);
   };
+
+  //eslint-disable-next-line
   const { mutate: createPost, isLoading: isLoadingSubmit } = useMutation({
     mutationFn: async (newPost: FormInputPost) => {
       return axios.post("/api/posts/create", newPost);
