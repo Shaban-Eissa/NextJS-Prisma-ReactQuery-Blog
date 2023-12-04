@@ -27,6 +27,7 @@ const EditPage: FC<EditPageProps> = ({ params }) => {
   });
 
   //eslint-disable-next-line
+  //ts-ignore
   const { mutate: updatePost, isLoading: isLoadingSubmit } = useMutation({
     mutationFn: (newPost: FormInputPost) => {
       return axios.patch(`/api/posts/${params.id}`, newPost);

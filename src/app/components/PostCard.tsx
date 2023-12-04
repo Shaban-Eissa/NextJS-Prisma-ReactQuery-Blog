@@ -21,6 +21,7 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
         <div className="card-actions justify-end">
           <span className="badge badge-neutral">
             {/* esling-disable-next-line */}
+            {/* ts-ignore */}
             {tag.name}
           </span>
           <Link href={`/blog/${id}`} className="hover:underline">
