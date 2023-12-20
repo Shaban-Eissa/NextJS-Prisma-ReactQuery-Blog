@@ -1,11 +1,14 @@
 "use client";
 
-import { FormInputPost } from "@/types";
-import { Tag } from "@prisma/client";
+import React, { FC } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { FC } from "react";
+
 import { SubmitHandler, useForm } from "react-hook-form";
+
+import { Tag } from "@prisma/client";
+
+import { FormInputPost } from "@/types";
 
 interface FormPostProps {
   submit: SubmitHandler<FormInputPost>;

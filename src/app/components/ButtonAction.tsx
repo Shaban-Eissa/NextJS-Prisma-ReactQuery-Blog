@@ -1,12 +1,13 @@
 "use client";
 
-import { Pencil, Trash } from "lucide-react";
-import Link from "next/link";
-import React from "react";
+import React, { FC } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
-import { FC } from "react";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+import { Pencil, Trash } from "lucide-react";
 
 interface ButtonActionProps {
   id: string;
@@ -14,9 +15,8 @@ interface ButtonActionProps {
 
 const ButtonAction: FC<ButtonActionProps> = ({ id }) => {
   const router = useRouter();
-  //eslint-disable-next-line
-  //ts-ignore
-  const { mutate: deletePost, isLoading } = useMutation({
+
+  const mutation = useMutation({
     mutationFn: async () => {
       return await axios.delete(`/api/posts/${id}`);
     },
@@ -28,6 +28,10 @@ const ButtonAction: FC<ButtonActionProps> = ({ id }) => {
       router.refresh();
     },
   });
+
+  const { mutate: deletePost, status } = mutation;
+
+  const isLoading = status === "pending";
   return (
     <div>
       <Link href={`/edit/${id}`} className="btn mr-2">

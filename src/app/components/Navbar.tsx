@@ -1,5 +1,6 @@
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+
 import { BookOpenCheck } from "lucide-react";
 
 const Navbar = () => {

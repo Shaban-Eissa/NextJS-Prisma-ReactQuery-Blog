@@ -1,12 +1,17 @@
 "use client";
-import { useMutation } from "@tanstack/react-query";
+
 import React from "react";
-import axios from "axios";
-import FormPost from "../components/FormPost";
+import { useMutation } from "@tanstack/react-query";
+import axios, { AxiosError } from "axios";
+
 import { SubmitHandler } from "react-hook-form";
-import { FormInputPost } from "@/types";
-import BackButton from "../components/BackButton";
+
 import { useRouter } from "next/navigation";
+
+import { FormInputPost } from "@/types";
+
+import BackButton from "../components/BackButton";
+import FormPost from "../components/FormPost";
 
 const CreatePage = () => {
   const router = useRouter();
@@ -14,19 +19,28 @@ const CreatePage = () => {
     createPost(data);
   };
 
-  //eslint-disable-next-line
-  const { mutate: createPost, isLoading: isLoadingSubmit } = useMutation({
+  const mutation = useMutation<
+    FormInputPost,
+    AxiosError,
+    FormInputPost,
+    unknown
+  >({
     mutationFn: async (newPost: FormInputPost) => {
       return axios.post("/api/posts/create", newPost);
+    },
+    onError: (error: AxiosError) => {
+      console.log(error);
     },
     onSuccess: () => {
       router.push("/");
       router.refresh();
     },
-    onError: (error) => {
-      console.log(error);
-    },
   });
+
+  const { mutate: createPost, status } = mutation;
+
+  const isLoadingSubmit = status === "pending";
+
   return (
     <div>
       <BackButton />

@@ -1,14 +1,16 @@
 "use client";
 
-import FormPost from "@/app/components/FormPost";
-import { FormInputPost } from "@/types";
-import React from "react";
-import { SubmitHandler } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import { FC } from "react";
-import { useQuery } from "@tanstack/react-query";
+import React, { FC } from "react";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import axios, { AxiosError } from "axios";
+
 import { useRouter } from "next/navigation";
+
+import { SubmitHandler } from "react-hook-form";
+
+import { FormInputPost } from "@/types";
+
+import FormPost from "@/app/components/FormPost";
 
 interface EditPageProps {
   params: {
@@ -26,13 +28,17 @@ const EditPage: FC<EditPageProps> = ({ params }) => {
     },
   });
 
-  //eslint-disable-next-line
-  //ts-ignore
-  const { mutate: updatePost, isLoading: isLoadingSubmit } = useMutation({
-    mutationFn: (newPost: FormInputPost) => {
-      return axios.patch(`/api/posts/${params.id}`, newPost);
-    },
-    onError: (error) => {
+  const mutation = useMutation<
+    FormInputPost,
+    AxiosError,
+    FormInputPost,
+    unknown
+  >({
+    mutationFn: (newPost: FormInputPost) =>
+      axios
+        .patch(`/api/posts/${params.id}`, newPost)
+        .then((response) => response.data),
+    onError: (error: AxiosError) => {
       console.log(error);
     },
     onSuccess: () => {
@@ -40,6 +46,10 @@ const EditPage: FC<EditPageProps> = ({ params }) => {
       router.refresh();
     },
   });
+
+  const { mutate: updatePost, status } = mutation;
+
+  const isLoadingSubmit = status === "pending";
 
   const handleEditPost: SubmitHandler<FormInputPost> = (data) => {
     updatePost(data);
