@@ -5,7 +5,7 @@ import { BookOpenCheck } from "lucide-react";
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-neutral-100 border-b">
+    <div className="navbar bg-neutral-100 border-b sticky z-50 top-0">
       <div className="container ">
         <div className="flex-1">
           <Link href="/">

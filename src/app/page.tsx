@@ -37,7 +37,7 @@ export default async function Home() {
   console.log(posts);
 
   return (
-    <main className="grid items-center justify-center md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+    <main className="card-container">
       {posts.map((post) => {
         const newPost: Post = {
           id: post.id,

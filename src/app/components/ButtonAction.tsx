@@ -38,7 +38,10 @@ const ButtonAction: FC<ButtonActionProps> = ({ id }) => {
         <Pencil />
         Edit
       </Link>
-      <button onClick={() => deletePost()} className="btn btn-error">
+      <button
+        onClick={() => deletePost()}
+        className="btn bg-red-500 hover:bg-red-400 text-white"
+      >
         {isLoading && <span className="loading loading-spinner"></span>}
         {isLoading ? (
           "Loading ...."
