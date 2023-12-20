@@ -34,13 +34,13 @@ Check out the live demo https://next-js-prisma-react-query.vercel.app
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Shaban-Eissa/NextJS-Airbnb-Clone.git
+   git clone https://github.com/Shaban-Eissa/NextJS-Prisma-ReactQuery-Blog.git
    ```
 
 2. Navigate to the project directory:
     
     ```bash
-    cd NextJS-Airbnb-Clone
+    cd NextJS-Prisma-ReactQuery-Blog
     ```
     
 3. Install dependencies:
