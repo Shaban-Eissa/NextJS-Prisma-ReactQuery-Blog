@@ -2,6 +2,8 @@ import { db } from "@/lib/db";
 
 import PostCard from "./components/PostCard";
 
+export const dynamic = "force-dynamic";
+
 async function getPosts() {
   const response = await db.post.findMany({
     select: {

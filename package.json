@@ -14,10 +14,12 @@
     "@tanstack/react-query": "^5.12.2",
     "axios": "^1.6.2",
     "lucide-react": "^0.294.0",
-    "next": "14.0.3",
+    "next": "^14.0.4",
+    "postgres": "^3.4.3",
     "react": "^18",
     "react-dom": "^18",
-    "react-hook-form": "^7.48.2"
+    "react-hook-form": "^7.48.2",
+    "react-query": "^3.39.3"
   },
   "devDependencies": {
     "@types/node": "^20",
