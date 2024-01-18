@@ -67,7 +67,7 @@ Check out the live demo https://next-js-prisma-react-query.vercel.app
 5. Open terminal and write ```npx prisma db push```. used to update the database schema to match your Prisma schema.
    It creates tables in the database if they don't exist, and updates existing tables if they are different.
 
-6. Open terminal ans write ```npx prisma generate```. used to generate the Prisma Client based on your Prisma schema.
+6. Open terminal and write ```npx prisma generate```. used to generate the Prisma Client based on your Prisma schema.
 
 ## Usage
 
